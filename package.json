@@ -1,0 +1,16 @@
+{
+  "name": "elixir-sound-library",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ elixirsoundlibrary/elixir-sound-library",
+    "create-local": "graph create --node http://localhost:8020/ elixirsoundlibrary/elixir-sound-library",
+    "remove-local": "graph remove --node http://localhost:8020/ elixirsoundlibrary/elixir-sound-library",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 elixirsoundlibrary/elixir-sound-library"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.28.1",
+    "@graphprotocol/graph-ts": "0.26.0"
+  }
+}

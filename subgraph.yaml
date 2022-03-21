@@ -1,0 +1,41 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ElixirSoundLibrary
+    network: arbitrum-one
+    source:
+      address: "0x7Ee85a200b0DC8520A4D129d8053986C30216e7E"
+      abi: ElixirSoundLibrary
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - PriceUpdated
+        - SoundCreated
+        - SoundLicensed
+        - Transfer
+      abis:
+        - name: ElixirSoundLibrary
+          file: ./abis/ElixirSoundLibrary.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PriceUpdated(indexed uint256,uint256,indexed address)
+          handler: handlePriceUpdated
+        - event: SoundCreated(indexed uint256,string,uint256,indexed address)
+          handler: handleSoundCreated
+        - event: SoundLicensed(indexed uint256,uint256,address,indexed address)
+          handler: handleSoundLicensed
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
